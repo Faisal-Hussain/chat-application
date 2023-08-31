@@ -1,0 +1,23 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+p {
+  margin-bottom: 0;
+}
+
+.is_notification {
+  filter:
+          brightness(1000%) grayscale(100%)
+          opacity(0.1)
+          drop-shadow(0 0 0 red)
+          drop-shadow(0 0 0 red)
+          drop-shadow(0 0 0 red)
+          drop-shadow(0 0 0 red)
+          drop-shadow(0 0 0 red);
+}
