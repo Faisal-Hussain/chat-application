@@ -31,6 +31,7 @@
                                     @enderror
                                 </div>
                                 <button type="submit" class="bc_darkBlue margin_top_24 c_white chat_btn fs_16">Sign in</button>
+                                <p class="d-flex justify-content-end mt-2"><a href="{{ route('forget.password.get') }}">Forgot Your Password?</a></p>
                             </form>
                         </div>
                         <div class="sign_in_cont_b1_b2 margin_top_32">

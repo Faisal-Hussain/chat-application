@@ -4,16 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Events\IsOnline;
 use App\Http\Controllers\Controller;
-use App\Models\Country;
 use App\Models\User;
-use App\Services\CountryService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
-use Spatie\Permission\Models\Role;
 
 class AdminAuthUserController extends Controller
 {

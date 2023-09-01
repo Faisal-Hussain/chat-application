@@ -20,18 +20,13 @@
     <link href="{{ asset('css/app.css').'?v='.time() }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/styles/style.css').'?v='.time() }}">
     <link rel="stylesheet" href="{{ asset('css/styles/responsive.css').'?v='.time() }}">
+    @stack('style')
 </head>
-<body>
+<body class="ltr @if(Illuminate\Support\Facades\Route::currentRouteName('chat')) chat-body @else no-chat-body @endif">
     <div id="app">
         <main>
             @yield('content')
         </main>
-        @section('audio')
-            <audio id="myAudio" autoplay>
-                <source src="{{asset('music/notification.wav')}}" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        @endsection
     </div>
     <script type="application/javascript" src="{{ asset('js/Btn_active.js').'?v='.time() }}"> </script>
     <script type="application/javascript" src="{{ asset('js/sidenavUsers.js').'?v='.time() }}"></script>

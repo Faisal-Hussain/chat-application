@@ -17,7 +17,13 @@
                         </p>
                     </a>
                 @endif
-
+                @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
+                    <a href="{{ route('admin_roles') }}" class="d_flex align_items_center fs_16 c_white">
+                        <p class="fs_16 @if(Illuminate\Support\Facades\Route::currentRouteName() == 'admin_roles') c_blue @else  c_white @endif">
+                            Permission
+                        </p>
+                    </a>
+                @endif
                 <a href="{{ route('search') }}" class="d_flex align_items_center fs_16 c_white">
                     <p class="fs_16 @if(Illuminate\Support\Facades\Route::currentRouteName() == 'search') c_blue @else  c_white @endif">
                         Search
@@ -38,8 +44,7 @@
                          class="nav-icon @if(count($notificationUsers) > 0) is_notification @endif nav-icon_notification">
                 </a>
                 <a href="{{ route('logout') }}" class="d_flex align_items_center c_white fs_16" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-                    <p class="c_white fs_16">Logout</p>
-                    <img src="{{ asset('images/icons/User_icon.png') }}" alt="" class="nav-icon">
+                    <p class="c_white fs_16">  Logout <img src="{{asset('/images/icons/logout.png')}}" style="width:24px;height:24px;margin-left:2px;"/></p>
                 </a>
                 <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}

@@ -25,11 +25,20 @@ body {
     font-family: 'LibreBaskerville', sans-serif;
 }
 
+.female_btn_new {
+    background: #eb8fbc!important;
+}
 button {
     cursor: pointer;
     border: none;
     background: transparent;
 }
+
+
+.word-break {
+    word-break: break-all;
+}
+
 
 .text_capitalize {
     text-transform: capitalize;
@@ -379,6 +388,7 @@ a {
 
 .sign_in_cont_b1 .logo_b img {
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
 }
 
 .male_female_btns_b {
@@ -478,6 +488,7 @@ a {
     position: fixed;
     padding: 24px 0px;
     z-index: 99;
+    left:10px;
 }
 
 .header_inner .logo_b {
@@ -525,7 +536,7 @@ a {
     width: 380px;
     position: fixed;
     top: 8%;
-    left: 0;
+    left: 10px;
     background: white;
     overflow-x: hidden;
     padding-top: 20px;
@@ -852,10 +863,15 @@ input[type="range"] {
 
 .messenger_cont {
     height: 100%;
-    width: 80.2%;
-    position: absolute;
-    bottom: 0%;
-    left: 19.8%;
+    width: cacl(100% - 390px);
+    margin-left: 380px;
+    /* width: 80.2%; */
+    /* position: absolute; */
+    /* bottom: 0%;
+    left: 19.8%; */
+}
+.sidenav_body_content_item .mobilename{
+    display: none;
 }
 .messenger_cont_inner_header_b{
     margin-top: 95px;
@@ -916,18 +932,20 @@ input[type="range"] {
 .messenger_cont_inner_messages_b {
     padding-left: 24px;
     padding-top: 5px;
+    position: relative;
 }
 
 .send_message_b {
     /*max-width: 1180px;*/
     width: 100%;
-    padding: 24px;
+    padding: 10px;/** Original is 24px */
 }
 
 .send_message_area {
     max-width: 1275px;
     width: 100%;
-    padding: 10px 16px;
+    padding: 2px 4px;
+    /* padding: 10px 16px; */
 }
 
 .send_message_area textarea {
@@ -959,11 +977,13 @@ input[type="range"] {
     position: absolute;
     left: 0.5%;
 }
-
+.send_messagebg{
+    background: rgb(231 239 243)!important;
+}
 .send_message_block {
     max-width: 792px;
     width: max-content;
-    background: rgba(233, 245, 251, 1);
+    background: #c1e0ef;
     color: #424242;
     padding: 12px;
     border-radius: 360px;
@@ -1454,5 +1474,67 @@ input:checked + .slider:before {
     font-size: 16px;
 }
 
+.button_icon{
+    width: 28px;
+    height: 28px;
+}
+.btn-blue{
+    background: #12A1E7;
+    color: white;
+    border-radius: 4px;
+    padding: 10px 16px;
+    width: 100%;
+}
+/**
+New style**/
+.chat-dropmenu{
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    position: absolute;
+    top: 10px;
+    left: -150px;
+    height: fit-content;
+    width: 150px;
+    z-index: 1;
 
-
+}
+.chat-dropmenu ul{
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+.chat-dropmenu ul li{
+    display: block;
+    padding: 7px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    text-align: center;
+}
+.chat-dropmenu ul li:hover{
+    background-color: #ddd;
+}
+.chat-dropmenu ul li:last-child{
+    border-bottom: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.chat-dropmenu ul li:first-child{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.chat-dropmenu ul li a{
+    color: #231C41;
+    display: block;
+    width: 100%;
+}
+.mobile_dots_for_action_user{
+    display: none;
+}
+.in_header_username{
+    width: fit-content;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}

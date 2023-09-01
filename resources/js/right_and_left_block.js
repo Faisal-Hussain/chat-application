@@ -14,10 +14,26 @@ $(document).ready(function () {
                     $(".sidenav-left .sidenav_body_content_item").remove();
                     $(".sidenav-left_mobile .sidenav_body_content_item").remove();
                     $.each(data, function (index, value) {
-                        let moreInfo = value.age + ' years, ' + value.state + ' / ' + value.country.name;
                         let url = window.site + '/pages/chat/' + value.id;
                         let urlGenderMale = window.site + '/images/icons/Male_icon_blue.png';
                         let urlGenderFemale = window.site + '/images/icons/Female_icon_rose.png';
+
+                        let ageInfo = `<span>${value.age + ' years '}</span>`;
+                        let countryInfo = `<span>${value.state + ' / ' + value.country.name}</span>`;
+                        let flagInfo = `<div>
+                                              <img src="${value.country.flag_link}" alt="">
+                                        </div>`;
+
+                        if(value.setting){
+                            if(value.setting.reveal_age == 0) {
+                                ageInfo = `<span></span>`;
+                            }
+
+                            if(value.setting.reveal_country == 0) {
+                                countryInfo = `<span></span>`;
+                                flagInfo = `<div> </div>`;
+                            }
+                        }
 
                         let divHtml = `
                             <div class="sex_b d_flex justify_content_center align_items_center bc_azure">
@@ -26,11 +42,12 @@ $(document).ready(function () {
                             <div class="info_b bc_lightBlue d_flex align_items_center justify_content_space_between">
                                 <div>
                                     <p class="fs_18">${value.nick_name}</p>
-                                    <p class="fs_14">${moreInfo}</p>
+                                    <p class="fs_14">
+                                        ${ageInfo}
+                                        ${countryInfo}
+                                    </p>
                                 </div>
-                                 <div>
-                                    <img src="${value.country.flag_link}" alt="">
-                                </div>
+                                 ${flagInfo}
                             </div>`;
 
                         if (value.gender == 2) {
@@ -41,11 +58,12 @@ $(document).ready(function () {
                             <div class="info_b bc_rose d_flex align_items_center justify_content_space_between">
                                 <div>
                                     <p class="fs_18">${value.nick_name}</p>
-                                    <p class="fs_14">${moreInfo}</p>
+                                    <p class="fs_14">
+                                        ${ageInfo}
+                                        ${countryInfo}
+                                    </p>
                                 </div>
-                                 <div>
-                                    <img src="${value.country.flag_link}" alt="">
-                                </div>
+                                  ${flagInfo}
                             </div>`;
                         }
 

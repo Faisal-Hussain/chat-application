@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\UserSetting;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -26,5 +27,6 @@ class AdminSeeder extends Seeder
         ]);
         $role = Role::query()->where('name', 'admin')->get();
         $admin->assignRole($role);
+        UserSetting::query()->create(['user_id' => $admin->id]);
     }
 }

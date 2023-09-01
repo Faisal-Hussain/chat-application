@@ -25,16 +25,31 @@ class FunctionController extends Controller
     /**
      * @return array
      */
-    public static function getOnlineUsers()
+    public static function getOnlineUsers($type='array')
     {
         $data = [];
-        $users = User::query()->where('id', '!=', Auth::id())->get();
+
+        $users = User::query()->with('setting')->where('id', '!=', Auth::id())->get();
+
         foreach ($users as $user) {
             if (Cache::has('user-online' . $user->id)) {
-                $data[]=$user->id;
+                if($user->setting){
+                    if($user->setting->visible_chat_mode == 1) {
+                        $data[]=$user->id;
+                    }
+                }else {
+                    $data[]=$user->id;
+                }
+
             }
         }
-        $onlineUsers = User::query()->with('country')->whereIn('id', $data)->get()->toArray();
+
+        if($type=='array'){
+            $onlineUsers = User::query()->with(['country', 'setting'])->whereIn('id', $data)->get()->toArray();
+        }elseif($type == 'obj'){
+            $onlineUsers = User::query()->with(['country', 'setting'])->whereIn('id', $data)->get();
+        }
+
         return $onlineUsers;
     }
 

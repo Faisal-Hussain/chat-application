@@ -61,7 +61,21 @@ class User extends Authenticatable
     }
 
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function setting()
+    {
+        return $this->hasOne(UserSetting::class);
+    }
 
-
+    public function get_avatar(){
+        if($this->avatar == null){
+            return asset('/img/avatar.png');
+        }else{
+            $file=MF::GetBladeMF($this->avatar,true);
+            return $file;
+        }
+    }
 
 }

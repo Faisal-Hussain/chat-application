@@ -32,7 +32,41 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+         /**
+         * Tos check
+         */
+        $tos_check=true;
+        if(Auth::user()->tos_agree == 0){
+            $tos_check=false;
+        }
+        return view('home',['tos_check'=>$tos_check]);
+    }
+
+    /**
+     * Agree or not tos
+     * @param agreetype
+     * @return responce
+     */
+    public function TosAction(Request $request){
+        $request->validate(['t'=>'required']);
+        switch ($request->t) {
+            case '1':
+                $user=User::find(Auth::user()->id);
+                $user->tos_agree=1;
+                $user->save();
+                return response()->json(['status'=>1]);
+                break;
+            case '2':
+                $user=User::find(Auth::user()->id);
+                $user->delete();
+                Auth::logout();
+                return response()->json(['status'=>2]);
+                break;
+            default:
+                # code...
+                break;
+        }
+        return response()->json(['status'=>0]);
     }
 
     /**
@@ -62,6 +96,8 @@ class HomeController extends Controller
                 })->when($gender, function ($q) use ($gender) {
                     return $q->where('gender', '=', $gender);
                 })->get()->toArray();
+
+            session()->flashInput($request->input());
         }
         return view('pages.search', compact('countries', 'users'));
     }
@@ -78,7 +114,7 @@ class HomeController extends Controller
             return redirect()->route('home');
         }
 
-        $user = User::query()->with(['country', 'roles'])->findOrFail($id);
+        $user = User::query()->with(['country', 'roles', 'setting'])->findOrFail($id);
         $conversation_1 = Conversation::where(['from_id' => Auth::id(), 'to_id' => (int) $id])->first();
         $conversation_2 = Conversation::where(['from_id' => (int) $id, 'to_id' => Auth::id()])->first();
 

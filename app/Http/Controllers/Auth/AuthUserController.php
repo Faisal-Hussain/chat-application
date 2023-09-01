@@ -23,6 +23,7 @@ class AuthUserController extends Controller
      */
     public function index()
     {
+        return redirect()->route('register');
         return view('auth.login');
     }
 
@@ -39,6 +40,7 @@ class AuthUserController extends Controller
         }
         $clientIP = $this->getIp();
         $currentCountry = CountryService::getCurrentCountry($clientIP);
+        if(!$currentCountry) $currentCountry="Afghanistan";
         return view('auth.register', compact('countries', 'ages', 'currentCountry'));
     }
 
@@ -60,6 +62,7 @@ class AuthUserController extends Controller
         }
 
         if ($user->blocked == 1) {
+
             return redirect("login")->withError('Oppes! Your account is blocked!');
         }
 
@@ -84,14 +87,51 @@ class AuthUserController extends Controller
     public function postRegistration(Request $request)
     {
         $request->validate([
-            'nick_name' => ['required', 'string', 'max:255','unique:users'],
-            'age' => ['required', 'string', 'max:2'],
-            'country' => ['required', 'string'],
-            'state' => ['required', 'string'],
-            'gender' => ['required', 'string'],
-        ]);
+            'nick_name' => 'required|string|max:20',
+            'age' => 'required|string|max:2',
+            // 'country' => 'required|string',
+            'state' => 'required|string',
+            'gender' => 'required|string',
+            'captcha' => 'required|captcha'
+        ],['captcha.captcha'=>'Invalid captcha code.']);
+
+        /**
+         * Check username already exits
+         */
+            $user_name_check=User::where('nick_name',$request->nick_name)->first();
+            if(isset($user_name_check->id)){
+                //We got already now we are goin clear all data
+                $user_name_check->delete();
+                //Warning all convisation data will be deleted
+            }
+        /**
+         * End username check
+         */
+
         $data = $request->all();
         $data['password'] = Hash::make('a6sd12a6s1d');
+
+        /**
+         * Use this case if used non country reg
+         */
+        $clientIP = $this->getIp();
+        if($clientIP == '127.0.0.1'){
+            $data['country']=1;
+        }else{
+            $currentCountry = CountryService::getCurrentCountry($clientIP);
+            if($currentCountry){
+                $get_country=Country::where('name',$currentCountry)->first();
+                if(isset($get_country->id)){
+                    $data['country']=$get_country->id;
+                }
+            }
+        }
+        if($request->state == null){
+            $data['state']=null;
+        }
+        /**
+         * End auto get country
+         */
         $user = $this->create($data);
 
         $role = Role::query()->where('name', 'basic')->get();
@@ -156,5 +196,14 @@ class AuthUserController extends Controller
         }
 
         return $clientIp;
+    }
+
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refreshCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img('math')]);
     }
 }

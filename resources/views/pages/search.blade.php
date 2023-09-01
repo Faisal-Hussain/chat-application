@@ -29,7 +29,7 @@
                             <select name="country" id="country" class="form-select  bg-white">
                                 <option value="" selected disabled hidden>Select Country</option>
                                 @foreach($countries as $country)
-                                    <option value="{{$country['id']}}">{{ $country['name'] }}</option>
+                                    <option value="{{$country['id']}}" @if(old('country') == $country['id'] ) selected @endif>{{ $country['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     @include('layouts.includes.home.nav')
+    <link rel="stylesheet" href="{{asset('plugin/jquery-confirm-master/dist/jquery-confirm.min.css')}}">
     <div class="sidenav">
         <div class="sidenav_body_content ">
             <div class="sidenav_body_content_inner d_flex align_items_center fd_column">
@@ -8,11 +9,11 @@
                 <div class="d_flex align_items_center hide_reveal_b margin_top_16">
                     <p class="fs_16 f_400">Hide country</p>
                     <span class="fs_18 f_500">
-                                    <label class="switch">
-                                            <input type="checkbox">
-                                        <p class="slider round"></p>
-                                    </label>
-                                </span>
+                        <label class="switch">
+                            <input type="checkbox" @if($admin->setting->reveal_country == 1) checked @endif class="setting" data-type="reveal_country">
+                            <p class="slider round"></p>
+                        </label>
+                    </span>
                     <p class="fs_16 f_400">Reveal country</p>
                 </div>
                 <img src="{{ $admin->country->flag_link }}" alt="" class="margin_top_24 flag_pic">
@@ -24,27 +25,28 @@
                 <div class="d_flex align_items_center hide_reveal_b margin_top_16">
                     <p class="fs_16 f_400">Hide age</p>
                     <span class="fs_18 f_500">
-                                    <label class="switch">
-                                            <input type="checkbox">
+                        <label class="switch">
+                            <input type="checkbox" @if($admin->setting->reveal_age == 1) checked @endif class="setting" data-type="reveal_age">
                                         <p class="slider round"></p>
-                                    </label>
-                                </span>
+                        </label>
+                     </span>
                     <p class="fs_16 f_400">Reveal age</p>
                 </div>
-                <div class="d_flex align_items_center  justify_content_center margin_top_24 edit_btn_b">
-                    <a href="" class="d_flex align_items_center">
-                        <button class="d_flex align_items_center justify_content_center fs_16">Edit
+                <div class="d_flex align_items_center  justify_content_center margin_top_24 edit_btn_b modal-buttons modal-button3s" style="cursor: pointer">
+                    <a href="{{route('admin_profile')}}" class="d_flex align_items_center" >
+                        <button class="d_flex align_items_center justify_content_center fs_16">
+                            Edit
                         </button>
                     </a>
                 </div>
                 <div class="d_flex align_items_center hide_reveal_b margin_top_24">
-                    <p class="fs_16 f_400">Invisible in chat mode</p>
+                    <p class="fs_16 f_400">Visible in chat mode</p>
                     <span class="fs_18 f_500">
-                                    <label class="switch">
-                                            <input type="checkbox">
-                                        <p class="slider round"></p>
-                                    </label>
-                                </span>
+                        <label class="switch">
+                             <input type="checkbox" @if($admin->setting->visible_chat_mode == 1) checked @endif class="setting" data-type="visible_chat_mode">
+                            <p class="slider round"></p>
+                       </label>
+                    </span>
                 </div>
             </div>
 
@@ -97,8 +99,8 @@
                             <input type="text" class="fs_16" placeholder="Search User">
                             <img src="{{ asset('images/icons/Search_icon_grey.png') }}" alt="search_pic">
                         </div>
-                        <div class="add_user_btn_b bc_darkBlue">
-                            <button class="add_user_btn fs_16 c_white">Add User</button>
+                        <div class="add_users">
+                            <a href="{{route('admin_user_form')}}" class="btn btn-primary btn-lg">Add new user</a>
                         </div>
                     </div>
                     <div class="tabContent_content2 margin_top_32">
@@ -154,9 +156,6 @@
                             <input type="text" class="fs_16" placeholder="Search User">
                             <img src="{{asset('images/icons/Search_icon_grey.png')}}" alt="search_pic">
                         </div>
-                        <div class="add_user_btn_b bc_darkBlue">
-                            <button class="add_user_btn fs_16 c_white">Add User</button>
-                        </div>
                     </div>
                     <div class="tabContent_content2 margin_top_32">
                         <table id="NormalUsers" class="fs_16 users">
@@ -211,9 +210,6 @@
                             <input type="text" class="fs_16" placeholder="Search User">
                             <img src="{{ asset('images/icons/Search_icon_grey.png') }}" alt="search_pic">
                         </div>
-                        <div class="add_user_btn_b bc_darkBlue">
-                            <button class="add_user_btn fs_16 c_white">Add User</button>
-                        </div>
                     </div>
                     <div class="tabContent_content2 margin_top_32">
                         <table id="VIPUsers" class="fs_16 users">
@@ -266,9 +262,6 @@
                         <div class="search_b">
                             <input type="text" class="fs_16" placeholder="Search User">
                             <img src="{{ asset('images/icons/Search_icon_grey.png') }}" alt="search_pic">
-                        </div>
-                        <div class="add_user_btn_b bc_darkBlue">
-                            <button class="add_user_btn fs_16 c_white">Add User</button>
                         </div>
                     </div>
                     <div class="tabContent_content2 margin_top_32">
@@ -368,8 +361,6 @@
                             <div class="d_flex fd_column justify_content_start" id="vip_dates_block_select">
                                 <p class="fs_18 f_400">Type the date from which user will become VIP</p>
                                 <div class="d_flex align_items_center vip_dates_block_select_div">
-                                    <input type="date" class="start-data" name="start" placeholder="From" min="{{Carbon\Carbon::today()->format('Y-m-d')}}" required>
-                                    -
                                     <input type="date" class="end-data" name="end" placeholder="To" min="{{Carbon\Carbon::today()->addDays(1)->format('Y-m-d')}}" required>
                                     <button class="save_btn bc_darkBlue c_white save-vip_btn">Save</button>
                                 </div>
@@ -387,6 +378,10 @@
                             <button class="d_flex align_items_center justify_content_center c_darkBlue fs_16 f_500 block-unblock_user">
                                 <img src="{{ asset('images/icons/Block_red.png') }}"  class="block-unblock_user_image" alt="">
                                 <span class="block-unblock_user_text">Block User</span>
+                            </button>
+                            <button class="d_flex align_items_center justify_content_center c_darkBlue fs_16 f_500 block-unblock_user">
+                                <img src="{{ asset('images/icons/kick.png') }}" class="button_icon" alt="">
+                                Kick User
                             </button>
                         </div>
                     </div>
@@ -440,12 +435,39 @@
                                 <div class="fs_18 f_400 margin_top_8 modal-2_report_message">
                                 </div>
                             </div>
-
+                            <a href="javascript:void(0)" class="btn btn-danger remove-report">Remove report</a>
                         </div>
                         <div class="modal-footer d_flex justify_content_center align_items_center">
                             <button class="d_flex align_items_center justify_content_center c_darkBlue fs_16 f_500 block-unblock_user">
                                 <img src="{{ asset('images/icons/Block_red.png') }}" alt=""  class="block-unblock_user_image">
                                 <span class="block-unblock_user_text">Block User</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="myModal3" class="modal modal-dashboard">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span></span>
+                            <h2 class="fs_24 c_darkBlue">
+                                <span class="close">×</span>
+                            </h2>
+                        </div>
+                        <div class="modal-body modal-dashboard_body">
+                            <div class="form-group">
+                                <p class="fs_18 f_400">Nickname:</p>
+                                <input type="text" class="form-control bg-white" name="nick_name" id="nick-name" value="{{ auth()->user()->nick_name }}">
+                            </div>
+
+                            <div class="form-group">
+                                <p class="fs_18 f_400">Password:</p>
+                                <input type="password" class="form-control bg-white" name="password" id="password">
+                            </div>
+                        </div>
+                        <div class="modal-footer d_flex justify_content_center align_items_center change-params">
+                            <button class="d_flex align_items_center justify_content_center c_darkBlue fs_16 f_500">
+                                <span class="">Change</span>
                             </button>
                         </div>
                     </div>
@@ -458,9 +480,11 @@
         <script type="application/javascript" src="{{ asset('js/modals.js').'?v='.time() }}"></script>
         <script type="application/javascript" src="{{ asset('js/SwitchActive.js').'?v='.time() }}"></script>
         <script type="application/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('plugin/jquery-confirm-master/dist/jquery-confirm.min.js') }}"></script>
         <script type="application/javascript">
             let pageName = `{{ $pageName }}`;
             $(document).ready(function () {
+                let reportId = null;
                 let urlBlockUser = `{{ asset('images/icons/Block_red.png') }}`;
                 let urlUnblockUser = `{{ asset('images/icons/ok_green.png') }}`;
                 let genderInfo =  'Male';
@@ -482,7 +506,6 @@
                 let reportMessage2 = $(".modal-2_report_message");
                 let reportDate2 = $(".modal-2_report_date");
 
-                let start = $(".start-data");
                 let end = $(".end-data");
                 let userId = $(".user-id");
                 let periodStart =  $('.period-start');
@@ -540,7 +563,7 @@
 
 
                 $('body').on('click', '.modal-button2', function () {
-                    let id = $(this).attr('data-id');
+                    reportId = $(this).attr('data-id');
                     name2.text();
                     age2.text();
                     country2.text();
@@ -553,7 +576,7 @@
                     blockUnblockUserImage.attr("src", urlBlockUser);
                     $.ajax({
                         type: "GET",
-                        url: `{{ route('dashboard.report') }}` + '/' + id,
+                        url: `{{ route('dashboard.report') }}` + '/' + reportId ,
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         data: {},
                         success: function(data){
@@ -582,7 +605,23 @@
                             $('#myModal2').show();
                         }
                     });
+                });
 
+                $('body').on('click', '.remove-report', function () {
+                    $.ajax({
+                        type: "GET",
+                        url: `{{ route('dashboard.report.remove') }}` + '/' + reportId ,
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        data: {},
+                        success: function(data){
+                          location.reload();
+                        }
+                    });
+                });
+
+
+                $('body').on('click', '.modal-button3', function () {
+                    $('#myModal3').show();
                 });
 
 
@@ -605,10 +644,8 @@
                });
 
                 $("body").on('click', '.save-vip_btn', function () {
-                    start.css({"border": "1px solid rgba(197, 197, 215, 1)"});
                     end.css({"border": "1px solid rgba(197, 197, 215, 1)"});
-                   if(start.val() == '' || end.val() == '' ) {
-                       start.css({"border": "1px solid red"});
+                   if( end.val() == '' ) {
                        end.css({"border": "1px solid red"});
                        return;
                    }
@@ -618,7 +655,6 @@
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         data: {
                             'id': userId.val(),
-                            'start': start.val(),
                             'end': end.val()
                         },
                         success: function(data){
@@ -631,21 +667,108 @@
                 });
 
                 $("body").on('click', '.block-unblock_user', function () {
+                    jQuery.confirm({
+                        title:"Confirmation",
+                        content:"Are sure to block this user",
+                        icon:"question",
+                        theme:"modern",
+                        buttons:{
+                            Cancel:{
+                                text:"No",
+                                btnClass:"btn-success",
+                                action:function(){
+                                    return true;
+                                }
+                            },Yes:{
+                                text:"Block forever",
+                                btnClass:"btn btn-dark",
+                                action:function(){
+                                    $.ajax({
+                                        type: "POST",
+                                        url: `{{ route('dashboard.block-or-unblock') }}?block=f`,
+                                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                                        data: {
+                                            'id': userId.val(),
+                                        },
+                                        success: function(data){
+                                            location.reload();
+                                        },
+                                        errors: function (err) {
+                                            console.log(err)
+                                        }
+                                    });
+                                }
+                            },Yes2:{
+                                text:"Ban for 24 hours",
+                                btnClass:"btn-danger",
+                                action:function(){
+                                    $.ajax({
+                                        type: "POST",
+                                        url: `{{ route('dashboard.block-or-unblock') }}`,
+                                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                                        data: {
+                                            'id': userId.val(),
+                                        },
+                                        success: function(data){
+                                            location.reload();
+                                        },
+                                        errors: function (err) {
+                                            console.log(err)
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    })
+
+                });
+
+                $("body").on('change', '.setting', function () {
+                    let status;
+                    let type =  $(this).attr('data-type');
+                    if($(this).is(':checked')) {
+                        status = 1;
+                    }else {
+                        status = 0;
+                    }
                     $.ajax({
                         type: "POST",
-                        url: `{{ route('dashboard.block-or-unblock') }}`,
+                        url: `{{ route('dashboard.change.setting') }}`,
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         data: {
-                            'id': userId.val(),
+                            type,
+                            status
                         },
                         success: function(data){
-                            location.reload();
                         },
                         errors: function (err) {
                             console.log(err)
                         }
                     });
                 });
+
+
+                $("body").on('click', '.change-params', function () {
+                    $('.modal-dashboard_body').find('.error_modal').remove();
+                    let nickName = $("#nick-name").val();
+                    let password = $("#password").val();
+                    $.ajax({
+                        type: "POST",
+                        url: `{{ route('dashboard.change.params') }}`,
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        data: {
+                            nick_name: nickName,
+                            password: password
+                        },
+                        success: function(data){
+                            location.reload();
+                        },
+                        error: function (err) {
+                            $('.modal-dashboard_body').append(`<small class="text-danger error_modal" style="font-size: 14px">${err.responseJSON.error}<small>`)
+                        }
+                    });
+                });
+
             })
         </script>
         <script type="application/javascript" src="{{ asset('js/admin_tabs.js').'?v='.time() }}"></script>

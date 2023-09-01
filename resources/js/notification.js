@@ -4,6 +4,7 @@ $(document).ready(function () {
             ".server.sent",
             (e) => {
                $(".nav-icon_notification").addClass('is_notification');
+                playAudio();
 
                if(window.routeName == 'inbox') {
                    let users = e['users'];
@@ -13,6 +14,7 @@ $(document).ready(function () {
                        let urlGender = window.site +  '/images/Unknown_User_Male.png';
                        let urlBlock = window.site +  '/images/icons/Block_red.png';
                        let urlRead = window.site +  '/images/icons/ok_green.png';
+                       let chatLink = window.site +  '/pages/chat/' + value.id;
                        let moreInfo = value.age + ' years, ' +  value.state + ' / ' + value.country.name;
                        if(value.gender == 2) {
                            urlGender = window.site +  '/images/Unknown_User.png';
@@ -20,7 +22,7 @@ $(document).ready(function () {
 
                        let html =`
                                <div class="inbox_cont_body_item d_flex justify_content_space_between align_items_center inbox_cont_body_item_mss">
-                                 <div class="d_flex align_items_center inbox_cont_body_item_b1">
+                                 <div class="d_flex align_items_center inbox_cont_body_item_b1" onclick="location.href='${chatLink}'" style="cursor: pointer">
                                      <div class="sex_b d_flex justify_content_center align_items_center bc_lightGray">
                                         <img src="${urlGender}" alt="pic" class="">
                                      </div>
@@ -50,3 +52,9 @@ $(document).ready(function () {
         );
     }
 });
+
+
+function playAudio() {
+    let x = new Audio(window.site+ '/music/notification.mp3');
+    x.play();
+}
