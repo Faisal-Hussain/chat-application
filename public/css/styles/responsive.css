@@ -1,3 +1,8 @@
+@media (max-width: 768px) {
+    .remove_for_mobile{
+        display: none
+    }
+}
 @media (max-width: 1900px) {
     /* .messenger_cont {
         width: 80%;
@@ -62,7 +67,8 @@
 
     .welcome_cont {
         margin-left: 10%;
-        max-width: 1000px;
+        max-width: 90%;
+        /* max-width: 1000px; */
     }
 
     .admin_screen_cont {
@@ -140,8 +146,9 @@
     }
 
     .welcome_cont {
-        margin-left: 15%;
-        max-width: 800px;
+        margin: 10%;
+        max-width: 90%;
+        /* max-width: 800px; */
     }
 
     .admin_screen_cont {
@@ -224,17 +231,17 @@
 }
 
 @media (max-width: 1250px) {
-    .header{
+    /* .header{
         left: 0px;
-    }
+    } */
     .online_users_cont {
         padding-top: 74px;
     }
 
     .sidenav {
-        /* display: none; */
-        width: 100%;
-        left: 0px;
+        display: none;
+        /* width: 100%; */
+        /* left: 0px; */
 
     }
     .chat-body .sidenav {
@@ -248,8 +255,9 @@
         max-width: 100%!important;
     }
     .chat-body .messenger_cont{
-        width: calc(100% - 250px);
-        margin-left: 250px;
+        /* width: calc(100% - 250px); */
+        /* margin-left: 250px; */
+        width: 100%;
     }
     .chat-body .sidenav_body_content_item .fs_14{
         display: none;
@@ -274,16 +282,25 @@
     }
 
     .sidenav_mobile {
-        /* display: block; */
-        padding-top: 64px;
+        display: block;
+        padding-top: 100px;
         max-width: 343px;
-        width: 100%;
-        /*margin: auto;*/
+        width: 90%;
+        margin: auto;
     }
+    /* .sidenav_mobile { 
+        margin-top: 50px;
+        max-width: unset;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        padding-left: 16px;
+        padding-right: 16px;
+    } */
 
     .sidenav_header {
-        border-top-left-radius: 16px;
-        border-top-right-radius: 16px;
+        border-radius: 10px;
+        /* border-top-right-radius: 16px; */
         padding: 16px;
     }
 
@@ -465,9 +482,10 @@
     }
 
     .welcome_cont {
-        margin: auto;
-        max-width: 900px;
-        width: 100%;
+        margin: 10%;
+        margin-top: 100px;
+        max-width: 90%;
+        /* width: 100%; */
     }
 
     .find_result_texts {
@@ -665,6 +683,10 @@
 }
 
 @media (max-width: 768px) {
+    .message-in-box {
+        max-width: 90%;
+        margin: auto;
+    }
     .grid_columns_4fr {
         grid-template-columns: 1fr 1fr;
     }
@@ -690,8 +712,9 @@
     }
 
     .send_message_block {
+        max-width: 95%;
         flex-direction: column;
-        align-items: end;
+        align-items: start;
         border-radius: 16px;
     }
 
@@ -754,6 +777,24 @@
         font-weight: 500;
         line-height: 27px;
     }
+    .send_messagebg_self {
+        float: left;
+    }
+    .welcome_cont {
+        margin: auto;
+        max-width: 90%;
+        /* width: 100%; */
+    }
+
+    /* .sidenav_mobile { 
+        margin-top: 50px;
+        max-width: unset;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        padding-left: 16px;
+        padding-right: 16px;
+    } */
 
 }
 
@@ -854,14 +895,14 @@
         top: 58%;
     }
 
-    .sidenav_mobile {
+    /* .sidenav_mobile {
         max-width: unset;
         display: flex !important;
         justify-content: center;
         align-items: center;
         padding-left: 16px;
         padding-right: 16px;
-    }
+    } */
 
     .online_user_btn {
         margin-left: 0px;

@@ -156,6 +156,9 @@
         <div class="sidenav_search d_flex justify_content_center">
             <p class="c_darkBlue fs_20 text_center find_result_texts">Here you will find your search results</p>
         </div>
+        <div class="sidenav_search_mobile d_flex justify_content_center">
+            <p class="c_darkBlue fs_20 text_center find_result_texts">Here you will find your search results</p>
+        </div>
     @endif
     @push('js')
         <script type="application/javascript" src="{{ asset('js/range.js') }}"> </script>

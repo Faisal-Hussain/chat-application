@@ -40,7 +40,7 @@ class AuthUserController extends Controller
         }
         $clientIP = $this->getIp();
         $currentCountry = CountryService::getCurrentCountry($clientIP);
-        if(!$currentCountry) $currentCountry="Afghanistan";
+        if(!$currentCountry) $currentCountry="Pakistan";
         return view('auth.register', compact('countries', 'ages', 'currentCountry'));
     }
 

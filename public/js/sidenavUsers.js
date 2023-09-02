@@ -8,7 +8,9 @@ function openNav() {
 }
 
 function closeNav() {
-    document.getElementById("sidenavUsers").style.width = "0";
+    // document.getElementById("sidenavUsers").style.width = "0";
+    document.getElementById("sidenavUsersContent").style.width = "0";
+    document.getElementById("sidenavUsersContent").style.height = "0";
 }
 
 let x = window.matchMedia("(max-width: 414px)")

@@ -484,11 +484,14 @@ a {
 }
 
 .header {
-    width: 100%;
+    /* width: 100%; */
     position: fixed;
     padding: 24px 0px;
     z-index: 99;
-    left:10px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    /* left:10px; */
 }
 
 .header_inner .logo_b {
@@ -535,8 +538,8 @@ a {
     height: 100%;
     width: 380px;
     position: fixed;
-    top: 8%;
-    left: 10px;
+    top: 92px;
+    /* left: 10px; */
     background: white;
     overflow-x: hidden;
     padding-top: 20px;
@@ -981,7 +984,7 @@ input[type="range"] {
     background: rgb(231 239 243)!important;
 }
 .send_message_block {
-    max-width: 792px;
+    max-width: 100%;
     width: max-content;
     background: #c1e0ef;
     color: #424242;
@@ -989,6 +992,9 @@ input[type="range"] {
     border-radius: 360px;
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.25);
     margin-bottom: 24px;
+}
+.send_messagebg_self {
+    float: right;
 }
 
 .received_message_block img, .send_message_block img {

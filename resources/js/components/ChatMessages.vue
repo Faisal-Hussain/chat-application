@@ -82,7 +82,7 @@
                 </div>
 
                 <div v-else>
-                    <div class="d_flex align_items_center justify_content_end send_messagebg" style="float:right;margin-right:15px;"
+                    <div class="d_flex align_items_center justify_content_end send_messagebg send_messagebg_self" style="margin-right:15px;"
                         :class="[user.gender == 2 ? 'received_message_block' : 'send_message_block']">
 
                         <p class="fs_16 word-break">{{ message.message}}</p>
@@ -303,7 +303,7 @@
                      */
                     let sendMessageBox = this.$refs.sendMessageBox;
                     let tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = '<div class="messenger_cont_inner_messages_b" style="margin-bottom:8px;"><div id="temp_data"><div  class="d_flex align_items_center justify_content_start send_message_block send_messagebg" style="float:right;margin-right:15px;"><div class="d_flex align_items_center"><p  class="fs_16 word-break">'+this.newMessage+'</p></div></div></div></div><div style="clear:both;"></di>';
+                    tempDiv.innerHTML = '<div class="messenger_cont_inner_messages_b" style="margin-bottom:8px;"><div id="temp_data"><div  class="d_flex align_items_center justify_content_start send_message_block send_messagebg send_messagebg_self" style="margin-right:15px;"><div class="d_flex align_items_center"><p  class="fs_16 word-break">'+this.newMessage+'</p></div></div></div></div><div style="clear:both;"></di>';
                     sendMessageBox.appendChild(tempDiv);
                     this.scrollToDiv();
                     this.newMessage="";

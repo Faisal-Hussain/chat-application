@@ -2,13 +2,13 @@
 
 @section('content')
 @push('style')
-    <style>
+    {{-- <style>
         @media (max-width: 1250px) {
             .main_cont{
                 display: none
             }
         }
-    </style>
+    </style> --}}
 @endpush
 <link rel="stylesheet" href="{{asset('plugin/jquery-confirm-master/dist/jquery-confirm.min.css')}}">
     @include('layouts.includes.home.nav')

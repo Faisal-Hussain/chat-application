@@ -81,7 +81,7 @@
             <h2 class="c_blue fs_24 text_center count-online">Online {{ count($onlineUsers) }}</h2>
             <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
         </div>
-        <div class="sidenav_body_content">
+        <div class="sidenav_body_content" id="sidenavUsersContent">
             @if(count($onlineUsers) > 0)
                 @foreach($onlineUsers as $onlineUser)
                     <div class="sidenav_body_content_item d_flex bc_lightGray" onclick="location.href='{{ route('chat', ['id' => $onlineUser->id]) }}';">
