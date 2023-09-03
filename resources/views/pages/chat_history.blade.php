@@ -9,8 +9,8 @@
             <p class="margin_top_24 text_center fs_24 f_600">Here will be you messages from people</p>
         </div>
     </div>
-    <div>
-        <span style="font-size:30px;cursor:pointer" class="openBtnSearch" onclick="openNavSearch()">&#9776;</span>
+    <div class="messages tab chat_history_message_area">
+        {{-- <span style="font-size:30px;cursor:pointer" class="openBtnSearch" onclick="openNavSearch()">&#9776;</span> --}}
         <div class="sidenav_online_users">
             <div class="sidenav_body_content ">
                 @if(count($users) > 0)
@@ -18,7 +18,8 @@
                         <div class="sidenav_body_content_item d_flex bc_lightGray" onclick="location.href='{{  route('chat', ['id' => $user['id']]) }}';">
                             @if($user['gender'] == 1)
                                 <div class="sex_b d_flex justify_content_center align_items_center bc_azure">
-                                    <img src="{{ asset('images/icons/Male_icon_blue.png') }}" alt="">
+                                    {{-- <img src="{{ asset('images/icons/Male_icon_blue.png') }}" alt=""> --}}
+                                    <img class="sex_img" src="{{ asset('images/Unknown_User_Male.png') }}" alt="">
                                 </div>
                                 <div class="info_b bc_lightBlue d_flex align_items_center justify_content_space_between">
                                     <div>
@@ -31,7 +32,8 @@
                                 </div>
                             @else
                                 <div class="sex_b d_flex justify_content_center align_items_center bc_lightRose">
-                                    <img src="{{ asset('images/icons/Female_icon_rose.png') }}" alt="">
+                                    {{-- <img src="{{ asset('images/icons/Female_icon_rose.png') }}" alt=""> --}}
+                                    <img class="sex_img" src="{{ asset('images/Unknown_User.png') }}" alt="">
                                 </div>
                                 <div class="info_b bc_rose d_flex align_items_center justify_content_space_between">
                                     <div>
@@ -54,16 +56,17 @@
             </div>
         </div>
         <div class="sidenav_online_users_mobile" id="sidenavSearch">
-            <div class="" style="margin-left: 5%">
+            {{-- <div class="" style="margin-left: 5%">
                 <a href="javascript:void(0)" class="closeBtn" onclick="closeNavSearch()">&times;</a>
-            </div>
+            </div> --}}
             <div class="sidenav_search_body_content" id="sidenavUsers">
                 @if(count($users) > 0)
                     @foreach($users as $user)
                         <div class="sidenav_body_content_item d_flex bc_lightGray" onclick="location.href='{{  route('chat', ['id' => $user['id']]) }}';">
                             @if($user['gender'] == 1)
                                 <div class="sex_b d_flex justify_content_center align_items_center bc_azure">
-                                    <img src="{{ asset('images/icons/Male_icon_blue.png') }}" alt="">
+                                    {{-- <img src="{{ asset('images/icons/Male_icon_blue.png') }}" alt=""> --}}
+                                    <img class="sex_img" src="{{ asset('images/Unknown_User_Male.png') }}" alt="">
                                 </div>
                                 <div class="info_b bc_lightBlue d_flex align_items_center justify_content_space_between">
                                     <div>
@@ -76,7 +79,8 @@
                                 </div>
                             @else
                                 <div class="sex_b d_flex justify_content_center align_items_center bc_lightRose">
-                                    <img src="{{ asset('images/icons/Female_icon_rose.png') }}" alt="">
+                                    {{-- <img src="{{ asset('images/icons/Female_icon_rose.png') }}" alt=""> --}}
+                                    <img class="sex_img" src="{{ asset('images/Unknown_User.png') }}" alt="">
                                 </div>
                                 <div class="info_b bc_rose d_flex align_items_center justify_content_space_between">
                                     <div>

@@ -337,6 +337,11 @@ a {
     width: 100%;
 }
 
+.sex_img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
 .logo_b img {
     width: 100%;
 }
@@ -552,12 +557,13 @@ a {
 }
 
 .sidenav_online_users_mobile {
+    position: relative;
     display: none;
 }
 
 .sidenav_search {
     height: 100%;
-    max-width: 686px;
+    max-width: 486px;
     width: 100%;
     position: fixed;
     top: 8%;
@@ -589,9 +595,18 @@ a {
 
 
 .main_cont, .admin_main_cont {
-    margin-left: 20%; /* Same as the width of the sidenav */
+    margin-left: 380px; /* Same as the width of the sidenav */
+    margin-top: 100px;
+    margin-right: 486px;
     font-size: 28px; /* Increased text to enable scrolling */
-    padding: 140px 10px 0;
+    /* padding: 140px 10px 0; */
+}
+
+.main_cont_for_welcome {
+    margin-left: 380px; /* Same as the width of the sidenav */
+    margin-top: 100px;
+    font-size: 28px; /* Increased text to enable scrolling */
+    /* padding: 140px 10px 0; */
 }
 
 .sidenav_body_content {
@@ -623,8 +638,9 @@ a {
 }
 
 .welcome_cont {
-    margin-top: 7%;
-    margin-left: 10%;
+    /* margin-top: 7%; */
+    /* margin-left: 10%; */
+    margin: 120px auto 0px auto;
     max-width: 1112px;
     width: 100%;
     padding: 48px 48px 72px;
@@ -660,9 +676,10 @@ a {
 .search_cont {
     max-width: 688px;
     width: 100%;
+    margin: 120px auto;
     padding: 32px 97px 64px;
     background: white;
-    margin-left: 5%;
+    /* margin-left: 5%; */
 }
 
 .search_cont_inner {
@@ -907,13 +924,18 @@ input[type="range"] {
 .chat_history_cont {
     max-width: 734px;
     width: 100%;
-    position: absolute;
-    top: 35%;
-    left: 45%;
-    transform: translate(-40%, -30%);
+    margin: 100px auto 0px auto;
+    /* position: absolute; */
+    /* top: 35%; */
+    /* left: 45%; */
+    /* transform: translate(-40%, -30%); */
     background: white;
     box-shadow: 0px 0px 16px 0px #00000040;
     border-radius: 16px;
+}
+
+.chat_history_message_area {
+    margin: auto;
 }
 
 .messenger_cont_inner {
@@ -1007,11 +1029,14 @@ input[type="range"] {
 }
 
 .inbox_cont {
-    padding-top: 95px;
+    /* padding-top: 95px; */
+    /* position: relative; */
     background: white;
     max-width: 1476px;
-    width: 100%;
-    margin-left: 23%;
+    /* width: 100%; */
+    margin-top: 90px;
+    margin-left: 380px;
+    /* margin-left: 23%; */
     box-shadow: 0px 0px 16px 0px #00000040;
 }
 
@@ -1060,7 +1085,7 @@ input[type="range"] {
 
 .inbox_cont_body_item_b1 .sex_b img {
     max-width: 70px;
-    padding: 15px;
+    /* padding: 15px; */
 }
 
 .inbox_cont_body_item_b2 a {

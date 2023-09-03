@@ -12,7 +12,8 @@
                 <div class="sidenav_body_content_item d_flex bc_lightGray" onclick="location.href='{{  route('chat', ['id' => $onlineUser['id']]) }}';">
                     @if($onlineUser['gender'] == 1)
                         <div class="sex_b d_flex justify_content_center align_items_center bc_azure">
-                            <img src="{{ asset('images/icons/Male_icon.png') }}" alt="">
+                            {{-- <img src="{{ asset('images/icons/Male_icon.png') }}" alt=""> --}}
+                            <img class="sex_img" src="{{ asset('images/Unknown_User_Male.png') }}" alt="">
                         </div>
                         <div class="info_b bc_lightBlue d_flex align_items_center justify_content_space_between">
                             <div>
@@ -25,7 +26,8 @@
                         </div>
                     @else
                         <div class="sex_b d_flex justify_content_center align_items_center bc_lightRose">
-                            <img src="{{ asset('images/icons/Female_icon.png') }}" alt="">
+                            {{-- <img src="{{ asset('images/icons/Female_icon.png') }}" alt=""> --}}
+                            <img class="sex_img" src="{{ asset('images/Unknown_User.png') }}" alt="">
                         </div>
                         <div class="info_b bc_rose d_flex align_items_center justify_content_space_between">
                             <div>
@@ -53,7 +55,8 @@
                 <div class="sidenav_body_content_item d_flex bc_lightGray" onclick="location.href='{{  route('chat', ['id' => $onlineUser['id']]) }}';">
                     @if($onlineUser['gender'] == 1)
                         <div class="sex_b d_flex justify_content_center align_items_center bc_azure">
-                            <img src="{{ asset('images/icons/Male_icon.png') }}" alt="">
+                            {{-- <img src="{{ asset('images/icons/Male_icon.png') }}" alt=""> --}}
+                            <img class="sex_img" src="{{ asset('images/Unknown_User_Male.png') }}" alt="">
                         </div>
                         <div class="info_b bc_lightBlue d_flex align_items_center justify_content_space_between">
                             <div>
@@ -66,7 +69,8 @@
                         </div>
                     @else
                         <div class="sex_b d_flex justify_content_center align_items_center bc_lightRose">
-                            <img src="{{ asset('images/icons/Female_icon.png') }}" alt="">
+                            {{-- <img src="{{ asset('images/icons/Female_icon.png') }}" alt=""> --}}
+                            <img class="sex_img" src="{{ asset('images/Unknown_User.png') }}" alt="">
                         </div>
                         <div class="info_b bc_rose d_flex align_items_center justify_content_space_between">
                             <div>

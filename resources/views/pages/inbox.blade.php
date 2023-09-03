@@ -27,11 +27,13 @@
                 @foreach($notificationUsers as $user)
                     <div class="inbox_cont_body_item d_flex justify_content_space_between align_items_center inbox_cont_body_item_mss">
                         <div class="d_flex align_items_center inbox_cont_body_item_b1" onclick="location.href='{{  route('chat', ['id' => $user['id']]) }}';" style="cursor: pointer">
-                            <div class="sex_b d_flex justify_content_center align_items_center bc_lightGray">
+                            <div class="sex_b d_flex justify_content_center align_items_center">
                                 @if($user['gender'] == 1)
-                                    <img src="{{ asset('images/icons/male_avatar.png') }}" alt="pic" class="">
+                                    {{-- <img src="{{ asset('images/icons/male_avatar.png') }}" alt="pic" class=""> --}}
+                                    <img class="sex_img" src="{{ asset('images/Unknown_User_Male.png') }}" alt="pic" class="sex_img">
                                 @else
-                                    <img src="{{ asset('images/icons/female_avatar.png') }}" alt="pic" class="">
+                                    {{-- <img src="{{ asset('images/icons/female_avatar.png') }}" alt="pic" class=""> --}}
+                                    <img class="sex_img" src="{{ asset('images/Unknown_User.png') }}" alt="pic" class="sex_img">
                                 @endif
                             </div>
                             <div class="d_flex fd_column">

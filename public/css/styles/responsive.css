@@ -9,6 +9,11 @@
         left: 20%;
     } */
 
+    .search_cont {
+        max-width: 500px;
+        /* margin-left: 5%; */
+    }
+
     .inbox_cont {
         /*max-width: 1376px;*/
     }
@@ -62,11 +67,11 @@
 
 @media (max-width: 1650px) {
     .search_cont {
-        margin-left: 7%;
+        /* margin-left: 7%; */
     }
 
     .welcome_cont {
-        margin-left: 10%;
+        /* margin-left: 10%; */
         max-width: 90%;
         /* max-width: 1000px; */
     }
@@ -95,7 +100,7 @@
 
 @media (max-width: 1500px) {
     .search_cont {
-        padding: 48px;
+        /* padding: 48px; */
     }
 
     .messenger_cont {
@@ -107,8 +112,8 @@
     .chat_history_cont {
         max-width: 534px;
         top: 45%;
-        left: 45%;
-        transform: translate(-40%, -30%);
+        /* left: 45%; */
+        /* transform: translate(-40%, -30%); */
     }
 
     .chat_history_cont_inner {
@@ -136,17 +141,21 @@
         grid-gap: 16px;
     }
 
+    .main_cont, .admin_main_cont {
+        margin-right: 386px;
+    }
+
     .sidenav_search {
         max-width: 386px;
     }
 
     .search_cont {
         max-width: 500px;
-        margin-left: 13%;
+        /* margin-left: 13%; */
     }
 
     .welcome_cont {
-        margin: 10%;
+        /* margin: 10%; */
         max-width: 90%;
         /* max-width: 800px; */
     }
@@ -165,9 +174,9 @@
 
     .chat_history_cont {
         max-width: 434px;
-        top: 45%;
+        /* top: 45%;
         left: 47%;
-        transform: translate(-40%, -30%);
+        transform: translate(-40%, -30%); */
     }
 
     .chat_history_cont_inner {
@@ -177,13 +186,13 @@
 }
 
 @media (max-width: 1320px) {
-    .sidenav {
+    /* .sidenav {
         width: 330px;
-    }
+    } */
 
     .search_cont {
         max-width: 500px;
-        margin-left: 10%;
+        /* margin-left: 10%; */
     }
 
     .messenger_cont {
@@ -203,9 +212,9 @@
 
     .chat_history_cont {
         max-width: 434px;
-        top: 45%;
+        /* top: 45%;
         left: 45%;
-        transform: translate(-40%, -30%);
+        transform: translate(-40%, -30%); */
     }
 
     .admin_screen_cont {
@@ -282,11 +291,12 @@
     }
 
     .sidenav_mobile {
+        position: relative;
         display: block;
-        padding-top: 100px;
         max-width: 343px;
         width: 90%;
         margin: auto;
+        margin-top: 100px;
     }
     /* .sidenav_mobile { 
         margin-top: 50px;
@@ -308,6 +318,14 @@
         border-bottom-left-radius: 16px;
         border-bottom-right-radius: 16px;
         padding: 16px;
+    }
+
+    .sidenav_mobile .closeBtn {
+        position: absolute;
+        top: 5%;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
     }
 
     .online_user_btn {
@@ -344,14 +362,6 @@
         margin-bottom: 24px;
     }
 
-    .sidenav_mobile .closeBtn {
-        position: absolute;
-        top: 5%;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
-
     .openBtn {
         display: block;
         position: fixed;
@@ -382,6 +392,7 @@
 
     .sidenav_search_mobile {
         display: block;
+        position: relative;
         /*  padding: 64px 16px 0px;*/
         margin: 0px auto 24px;
         max-width: 500px;
@@ -403,13 +414,15 @@
     }
 
     .chat_history_cont {
-        position: unset;
+        /* position: unset; */
         max-width: 434px;
+        margin-top: 25px;
         width: 100%;
-        transform: translate(0);
+        /* transform: translate(0); */
     }
 
     .sidenav_online_users_mobile {
+        margin: 24px auto;
         margin-top: 24px;
         display: block;
         height: 100%;
@@ -428,19 +441,21 @@
 
     .sidenav_search_mobile .closeBtn {
         position: absolute;
-        top: 5%;
+        top: 0px;
+        right: 10px;
         font-size: 36px;
         margin-left: 0px;
     }
 
     .sidenav_online_users_mobile .closeBtn {
         position: absolute;
-        top: 5%;
+        top: 0px;
+        right: 15px;
         font-size: 36px;
-        margin-left: 0px;
+        /* margin-left: 0px; */
     }
 
-    .main_cont {
+    .main_cont, .main_cont_for_welcome {
         position: unset;
         padding: 0px 16px;
         margin: 32px auto 24px;
@@ -482,7 +497,7 @@
     }
 
     .welcome_cont {
-        margin: 10%;
+        /* margin: 10%; */
         margin-top: 100px;
         max-width: 90%;
         /* width: 100%; */
@@ -558,7 +573,7 @@
     }
 
     .inbox_cont {
-        max-width: 1200px;
+        max-width: 90%;
         width: 100%;
         margin: 24px auto;
         padding: 0px 16px;
@@ -599,11 +614,11 @@
         width: 100%;
     }
 
-    .inbox_cont {
+    /* .inbox_cont {
         max-width: unset;
         width: 100%;
         padding: 0;
-    }
+    } */
 
     .inbox_cont_inner {
         background: white;
@@ -738,7 +753,7 @@
     }
 
     .messenger_cont_inner_header_b {
-        flex-direction: column;
+        /* flex-direction: column; */
     }
 
     .messenger_cont_inner_header_b1 {
@@ -912,12 +927,12 @@
     }
 
     .sidenav_search_mobile {
-        max-width: 490px;
-        width: 100%;
+        max-width: 90%;
+        /* width: 100%; */
     }
 
     .chat_history_cont {
-        position: unset;
+        /* position: unset; */
         max-width: 400px;
     }
 

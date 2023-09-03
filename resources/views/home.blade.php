@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="{{asset('plugin/jquery-confirm-master/dist/jquery-confirm.min.css')}}">
     @include('layouts.includes.home.nav')
     @include('layouts.includes.home.left_block')
-    <div class="main_cont">
+    <div class="main_cont_for_welcome">
         <div class="welcome_cont">
             <div class="welcome_cont_inner d_flex fd_column align_items_center justify_content_center">
                 <h2 class="fs_24 text_center c_darkBlue f_600">Welcome  @auth {{Auth::user()->nick_name}} @endauth to {{strtoupper(config('app.name'))}}</h2>

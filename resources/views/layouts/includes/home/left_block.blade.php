@@ -15,7 +15,8 @@
                             @if($onlineUser->hasRole('admin'))
                                 <img src="{{ asset('images/icons/admin_badge.png') }}" alt="">
                             @else
-                                <img src="{{ asset('images/icons/Male_icon_blue.png') }}" alt="">
+                                {{-- <img src="{{ asset('images/icons/Male_icon_blue.png') }}" alt=""> --}}
+                                <img class="sex_img" src="{{ asset('images/Unknown_User_Male.png') }}" alt="">
                             @endif
                         </div>
                         <div class="info_b bc_lightBlue d_flex align_items_center justify_content_space_between" @if($onlineUser->hasRole('admin')) style="background:url({{asset('images/icons/admin_border.png')}});no-repeat;background-size:cover" @endif>
@@ -54,7 +55,8 @@
                             @if($onlineUser->hasRole('admin'))
                                 <img src="{{ asset('images/icons/admin_badge.png') }}" alt="">
                             @else
-                                <img src="{{ asset('images/icons/Female_icon_rose.png') }}" alt="">
+                                {{-- <img src="{{ asset('images/icons/Female_icon_rose.png') }}" alt=""> --}}
+                                <img class="sex_img" src="{{ asset('images/Unknown_User.png') }}" alt="">
                             @endif
                         </div>
                         <div class="info_b bc_rose d_flex align_items_center justify_content_space_between" @if($onlineUser->hasRole('admin')) style="background:url({{asset('images/icons/admin_border.png')}});no-repeat;background-size:cover" @endif>
@@ -78,7 +80,9 @@
 <div class="sidenav_mobile sidenav-left_mobile" >
     <div class="sidenav_mobile_inner" id="sidenavUsers">
         <div class="sidenav_header">
-            <h2 class="c_blue fs_24 text_center count-online">Online {{ count($onlineUsers) }}</h2>
+            <h2 class="c_blue fs_24 text_center count-online cursor-pointer">
+                <a href="javascript:void(0)" onclick="openNav()">Online {{ count($onlineUsers) }}</a>
+            </h2>
             <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
         </div>
         <div class="sidenav_body_content" id="sidenavUsersContent">
@@ -87,7 +91,8 @@
                     <div class="sidenav_body_content_item d_flex bc_lightGray" onclick="location.href='{{ route('chat', ['id' => $onlineUser->id]) }}';">
                         @if($onlineUser->gender == 1)
                             <div class="sex_b d_flex justify_content_center align_items_center bc_azure">
-                                <img src="{{ asset('images/icons/Male_icon_blue.png') }}" alt="">
+                                {{-- <img src="{{ asset('images/icons/Male_icon_blue.png') }}" alt=""> --}}
+                                <img class="sex_img" src="{{ asset('images/Unknown_User_Male.png') }}" alt="">
                             </div>
                             <div class="info_b bc_lightBlue d_flex align_items_center justify_content_space_between">
                                 <div>
@@ -103,7 +108,8 @@
                             </div>
                         @else
                             <div class="sex_b d_flex justify_content_center align_items_center bc_lightRose">
-                                <img src="{{ asset('images/icons/Female_icon_rose.png') }}" alt="">
+                                {{-- <img src="{{ asset('images/icons/Female_icon_rose.png') }}" alt=""> --}}
+                                <img class="sex_img" src="{{ asset('images/Unknown_User.png') }}" alt="">
                             </div>
                             <div class="info_b bc_rose d_flex align_items_center justify_content_space_between">
                                 <div>
@@ -124,4 +130,4 @@
         </div>
     </div>
 </div>
-<span style="font-size:30px;cursor:pointer" class="openBtn" onclick="openNav()">&#9776;</span>
+{{-- <span style="font-size:30px;cursor:pointer" class="openBtn" onclick="openNav()">&#9776;</span> --}}

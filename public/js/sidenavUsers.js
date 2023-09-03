@@ -1,9 +1,13 @@
 function openNav() {
     document.getElementById("sidenavUsers").style.display= "block";
     if(x.matches){
-        document.getElementById("sidenavUsers").style.width = "270px";
+        // document.getElementById("sidenavUsers").style.width = "270px";
+        document.getElementById("sidenavUsersContent").style.width = "270px";
+        document.getElementById("sidenavUsersContent").style.height = 'max-content';
     } else {
-        document.getElementById("sidenavUsers").style.width = "350px";
+        // document.getElementById("sidenavUsers").style.width = "350px";
+        document.getElementById("sidenavUsersContent").style.width = "343px";
+        document.getElementById("sidenavUsersContent").style.height = 'max-content';
     }
 }
 
